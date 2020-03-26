@@ -1,3 +1,9 @@
+# ESLint Config
+
+这是一个 ESLint 的配置仓库
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,14 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App(): React.ReactNode {
+  const [x, setX] = useState(1);
+  useEffect(() => {
+    console.log(x);
+  }, []);
   return (
-    <div className="App">
+    <div
+      className="App"
+      onClick={e => {
+        console.log(e);
+      }}
+    >
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img
+          src={logo}
+          className="App-logo"
+          alt="logo"
+          onClick={e => {
+            console.log(e);
+          }}
+        />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit
+          <code>src/App.tsx</code>
+          and save to reload.
         </p>
         <a
           className="App-link"
