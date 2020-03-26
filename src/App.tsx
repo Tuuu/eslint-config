@@ -6,7 +6,7 @@ function App(): React.ReactNode {
   const [x, setX] = useState(1);
   useEffect(() => {
     console.log(x);
-  }, []);
+  }, [x]);
   return (
     <div
       className="App"

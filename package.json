@@ -22,6 +22,20 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "./**/*.{js,jsx,ts,tsx}": [
+      "yarn lint"
+    ]
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -50,6 +64,8 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.9",
     "prettier": "^1.19.1"
   }
 }
