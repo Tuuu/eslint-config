@@ -20,8 +20,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src"
+    "lint": "yarn lint:js && yarn lint:style",
+    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:style": "stylelint \"./src/**/*.scss\" --syntax scss",
+    "lint:fix": "yarn lint:fix-js && yarn lint:fix-style",
+    "lint:fix-js": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:fix-style": "stylelint --fix \"./src/**/*.scss\" --syntax scss"
   },
   "husky": {
     "hooks": {
@@ -29,12 +33,13 @@
     }
   },
   "lint-staged": {
+    "./**/*.scss": "stylelint --syntax scss",
     "./**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",
       "git add"
     ],
     "./**/*.{js,jsx,ts,tsx}": [
-      "yarn lint"
+      "yarn lint:js"
     ]
   },
   "eslintConfig": {
@@ -68,6 +73,13 @@
     "eslint-plugin-react-hooks": "^2.5.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "stylelint": "^13.2.1",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.16.0"
   }
 }
