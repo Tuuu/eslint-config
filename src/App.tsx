@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App(): React.ReactNode {
+const App: React.FunctionComponent = () => {
   const [x, setX] = useState(1);
   useEffect(() => {
     console.log(x);
@@ -39,6 +39,6 @@ function App(): React.ReactNode {
       </header>
     </div>
   );
-}
+};
 
 export default App;
