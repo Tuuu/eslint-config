@@ -1,6 +1,7 @@
 name: GitHub Action Test Demo
 on:
-  push:
+  pull_request:
+    types: [assigned]
     braches:
       - master
 
@@ -8,13 +9,33 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # 设置环境
       - name: Checkout
         uses: actions/checkout@v2
       - name: setNode
         uses: actions/setup-node@v1
         with:
-          node-version: '12'
+          node-version: '12.x'
+      # build
       - name: yarn install, build
         run: |
           yarn install
           yarn build
+      # 部署到腾讯云服务器
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.2
+          env:
+            # 本地.ssh文件下的私钥id_rsa，存在secrets的TOKEN中
+            SSH_PRIVATE_KEY: ${{ secrets.TOKEN }}
+            # 复制操作的参数。"-avzr --delete"意味部署时清空服务器目标目录下的文件
+            ARGS: "-avzr --delete"
+            # 源目录，相对于$GITHUB_WORKSPACE根目录的路径
+            SOURCE: "build/"
+            # 服务器域名
+            REMOTE_HOST: "122.152.194.114"
+            # 腾讯云默认用户名为root
+            REMOTE_USER: "ubuntu"
+            # 服务器目标目录
+            TARGET: "/opt/eslint-config/build"
+
+
