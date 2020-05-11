@@ -9,6 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+
       # 设置环境
       - name: Checkout
         uses: actions/checkout@v2
@@ -37,5 +38,3 @@ jobs:
             REMOTE_USER: "ubuntu"
             # 服务器目标目录
             TARGET: "/opt/eslint-config/build"
-
-
