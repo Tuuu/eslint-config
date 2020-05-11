@@ -1,0 +1,20 @@
+name: GitHub Action Test Demo
+on:
+  push:
+    braches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: setNode
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: yarn install, build
+        run: |
+          yarn install
+          yarn build
