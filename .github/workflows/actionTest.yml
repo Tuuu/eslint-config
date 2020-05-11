@@ -1,0 +1,12 @@
+name: GitHub Action Test Demo
+on:
+  pull_request:
+    braches:
+      - deploy
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
