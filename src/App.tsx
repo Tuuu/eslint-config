@@ -21,7 +21,7 @@ const App: React.FunctionComponent = () => {
         <Link to="/center" className="App-link">
           前往个人中心
         </Link>
-        <button type="button">点我</button>
+        {/* <button type="button">点我</button> */}
       </header>
     </div>
   );
